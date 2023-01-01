@@ -32,7 +32,7 @@ function App() {
           <p>Тест</p>
           <p>{JSON.stringify(userState.webAppUser, undefined, "    ")}</p>
           {/* <p>{webAppUser?.photo_url}</p> */}
-          <RoomPage userid={webAppUser.id} username = {webAppUser.first_name} room = {0} role = {0}/>
+          <RoomPage userid={userState.webAppUser.id} username = {userState.webAppUser.first_name} room = {0} role = {0}/>
         </div>
       </div>
     </QueryClientProvider>
