@@ -17,12 +17,14 @@ export default function RoomPage(props) {
             )
     })
 
-    // if (error) return error
+    if (isLoading) return <p>Загрузка...</p>;
+
+    if (error) return <p>Ошибка: {error.message}</p>;
 
     return (
         <div className="container-sm">
             <p>{data.toString()}</p>
-            <p>{reqBody.toString()}</p>
+            {/* <p>{reqBody.toString()}</p> */}
 
             {/* <div className="input-group input-group-lg my-2">
                 <span className="input-group-text">Оценка</span>
