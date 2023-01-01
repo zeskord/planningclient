@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './App.css';
 
+const queryClient = new QueryClient()
+
 function App() {
+
+  const style = {
+    minWidth: '100vw',
+    minHeight: '100vh'
+  }
+
+  const webApp = window.Telegram.WebApp
+  const initDataUnsafe = webApp.initDataUnsafe
+  var webAppUser = initDataUnsafe.user
+
+  const [userState, setUserState] = useState({
+    webAppUser: webAppUser,
+    userRole: getUserRole()
+  })
+
+  function getUserRole() {
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="bg-light" style={style}>
+        <div className="container-sm">
+          <p>Тест</p>
+          <p>{JSON.stringify(userState.webAppUser, undefined, "    ")}</p>
+          {/* <p>{webAppUser?.photo_url}</p> */}
+          {/* <RoomPage userid={webAppUser.id} username = {webAppUser.first_name} room = {0} role = {0}/> */}
+        </div>
+      </div>
+    </QueryClientProvider>
   );
 }
 
