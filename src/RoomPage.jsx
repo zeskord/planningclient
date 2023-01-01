@@ -23,7 +23,7 @@ export default function RoomPage(props) {
 
     return (
         <div className="container-sm">
-            <p>{data.toString()}</p>
+            <p>{JSON.stringify(data)}</p>
             {/* <p>{reqBody.toString()}</p> */}
 
             {/* <div className="input-group input-group-lg my-2">
